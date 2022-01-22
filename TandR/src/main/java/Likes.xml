@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="likesns">
+	<insert id="insert" parameterType="likes">
+	<selectKey keyProperty="lkNum" order="BEFORE" resultType="integer">
+			select nvl(max(lkNum), 0) + 1 lkNum from likes
+		</selectKey>
+		insert into likes values(#{lkNum},#{rvNum}, #{id })
+	</insert>
+	<select id="select" parameterType="likes" resultType="string">
+		select id from likes where id = #{id } and rvNum = #{rvNum }
+	</select>
+</mapper>

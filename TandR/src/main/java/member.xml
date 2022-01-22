@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="membertr">
+	<select id="select" parameterType="string" resultType="member">
+		select * from member where id=#{id}
+	</select>	
+	<insert id="insert" parameterType="member">
+	insert into member (id,password,name,textcount,ticketcount,tel,address,mailaddress,score,reg_date,memberDel)values(#{id},#{password},#{name},0,0,#{tel},#{address},#{mailaddress},0,sysdate,'n')
+	</insert>
+	<update id="update_pw" parameterType="member">
+	update member set password=#{password} where id=#{id}
+	</update>
+	<update id="update" parameterType="member">
+	update member set password=#{password},name=#{name},tel=#{tel},address=#{address},mailaddress=#{mailaddress} where id=#{id}
+	</update>
+	<select id="gettotal" parameterType="string" resultType="_int">
+	select count(*) from member
+	</select>
+	<select id="selectList" resultType="member">
+	select * from (select rowNum rn, a.* from(select * from member order by reg_date)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="selectSearchList" parameterType="string" resultType="member">
+	select * from (select rowNum rn, a.* from(select * from member where ${whereM} like '%' ||  #{search} || '%' order by reg_date)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="gettotalsearch" parameterType="string" resultType="_int">
+	select count(*) from member where ${whereM} like '%' ||  #{search} || '%'
+	</select>
+	<update id="delete" parameterType="string">
+	update member set memberDel=#{del} where id=#{id}
+	</update>
+	<select id="selectScore" parameterType="string" resultType="int">
+		select score from member where id=#{id}
+	</select>
+	<update id="plusScore" parameterType="member">
+	update member set score = score+2 where id=#{id }
+	</update>
+	<update id="reduceScore" parameterType="member">
+	update member set score= score-20 where id=#{id }
+	</update>
+	<update id="rvScore" parameterType="string">
+	update member set score = score+1 where id=#{id }
+	</update>
+</mapper>

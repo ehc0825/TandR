@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movietr">
+	<select id="select" parameterType="integer" resultType="movie">
+	select * from movie where movieCode = #{movieCode}
+	</select>
+	
+	<select id="gettotalClosed" parameterType="String" resultType="_int">
+	select count(*) from movie where movieTag = 1
+	</select>
+	<select id="gettotalNow" parameterType="String" resultType="_int">
+	select count(*) from movie where movieTag = 2
+	</select>
+	<select id="gettotalComing" parameterType="String" resultType="_int">
+	select count(*) from movie where movieTag = 3
+	</select>
+	
+	
+	<select id="selectNowList" resultType="movie">
+	select * from (select rowNum rn, a.* from(select * from movie where movieTag = 2 order by movieCode )a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="selectClosedList" resultType="movie">
+	select * from (select rowNum rn, a.* from(select * from movie where movieTag = 1 order by movieCode )a) where rn between #{startRow} and #{endRow} 
+	</select>
+	<select id="selectComingList" resultType="movie">
+	select * from (select rowNum rn, a.* from(select * from movie where movieTag = 3 order by movieCode )a) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectTop10List" resultType="movie">
+	select rowNum rvRank, a.* from (select  m.movieTitle,r.movieCode, count(*) from reservation r, movie m where m.moviecode=r.moviecode group by r.moviecode,m.movieTitle order by 3 desc)a where rowNum <![CDATA[<=]]> #{top10}
+	</select>
+	<select id="searchMovielist" resultType="movie">
+	select * from (select rowNum rn, a.* from(select * from movie where lower(movieTitle) like lower('%' ||  #{result} || '%') or actor like lower('%' ||  #{result} || '%')  or director like lower('%' ||  #{result} || '%') order by movieTitle desc,actor desc,director desc)a) where rn <![CDATA[<=]]> #{mresultnum}
+	</select>
+	
+	<select id="selectInfo" resultType="movie">
+	select * from (select rowNum rn, a.* from
+	(select * from movie where movieCode=#{movieCode} order by movieCode )a) 
+	where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="gettotal" parameterType="String" resultType="_int">
+	select count(*) from movie
+	</select>
+	
+	<select id="selectList" resultType="movie">
+	select * from (select rowNum rn, a.* from(select * from movie order by movieCode )a) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="updateClosed" parameterType="string">
+	update movie set movieTag=1 where movieCode=#{movieCode} and movieTag=2
+	</update>
+	
+	<update id="updateNow" parameterType="string">
+	update movie set movieTag=2 where movieCode=#{movieCode} and movieTag=3
+	</update>
+	<select id="selectTitle" resultType="string" parameterType="integer">
+		select movieTitle from movie where movieCode = #{movieCode }
+	</select>
+	
+	<insert id="insert" parameterType="movie">		
+	
+		insert into movie values(#{movieCode}, #{movieTitle}, #{movieTag},#{releaseDate}, #{cDate},#{director}, #{actor}, #{movieInfo}, #{movieContent}, #{movieGrade}, #{poster,jdbcType=VARCHAR}, #{movieStar}, #{runningTime}, #{moviePrice}, 'n', #{movieGenre})
+	</insert>
+	
+	<select id="selectMovieCode" resultType="_int">
+	select (max(movieCode)+1) movieCode from movie
+	</select>
+	<select id="getStar" resultType="_int">
+	select movieStar from movie where movieCode=#{movieCode}
+	</select>
+	<update id="updateMovieStar" parameterType="string">
+	update movie set movieStar=#{nowstar} where movieCode=#{movieCode}
+	</update>
+	
+</mapper>

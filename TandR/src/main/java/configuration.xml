@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties" />
+	<typeAliases>
+		<typeAlias alias="member" type="tandr.model.Member" />	
+		<typeAlias alias="screen" type="tandr.model.Screen" />			
+		<typeAlias alias="fboard" type="tandr.model.Fboard" />
+		<typeAlias alias="review" type="tandr.model.Review" />
+		<typeAlias alias="event" type="tandr.model.Event" />
+		<typeAlias alias="reply" type="tandr.model.Reply" />
+		<typeAlias alias="movie" type="tandr.model.Movie" />
+		<typeAlias alias="reservation" type="tandr.model.Reservation" />		
+		<typeAlias alias="theater" type="tandr.model.Theater" />
+		<typeAlias alias="searchCount" type="tandr.model.SearchCount" />
+		<typeAlias alias="nowShowing" type="tandr.model.NowShowing" />
+		<typeAlias alias="likes" type="tandr.model.Likes" />
+		<typeAlias alias="saveboard" type="tandr.model.Saveboard" />			
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="member.xml" />
+		<mapper resource="screen.xml" />		
+		<mapper resource="fboard.xml" />
+		<mapper resource="review.xml" />
+		<mapper resource="event.xml" />
+		<mapper resource="reply.xml" />
+		<mapper resource="movie.xml" />
+		<mapper resource="reservation.xml" />		
+		<mapper resource="theater.xml" />
+		<mapper resource="searchCount.xml" />
+		<mapper resource="nowShowing.xml" />
+		<mapper resource="Likes.xml" />
+		<mapper resource="saveboard.xml" />
+	</mappers>
+</configuration>

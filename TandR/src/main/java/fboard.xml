@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fboardns">
+	<select id="getTotal" parameterType="string" resultType="integer" >
+		select count(*) from fboard
+	</select>
+	<select id="list" resultType="fboard">
+		select * from (select rowNum rn, a.* from(select * from fboard order by fbNum desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<insert id="insert" parameterType="fboard">
+		<selectKey keyProperty="fbNum" order="BEFORE" resultType="integer">
+			select nvl(max(fbNum), 0) + 1 fbNum from fboard
+		</selectKey>
+		insert into fboard (fbNum, fbTitle, fbContent, id, photo, fbDate, fbDel, fbReadCount, replyCount )values(#{fbNum}, #{fbTitle}, #{fbContent}, #{id}, #{photo,jdbcType=VARCHAR}, sysdate, 'n', 0, 0 )
+	</insert>
+	<update id="readcountUpdate" parameterType="string">
+		update fboard set fbReadCount = fbReadCount + 1 where fbNum = #{fbNum}
+	</update>
+	<select id="selectOne" resultType="fboard">
+		select * from fboard where fbNum = #{fbNum}
+	</select>
+	<update id="update" parameterType="fboard">
+		update fboard set fbTitle=#{fbTitle}, fbContent=#{fbContent}, photo=#{photo,jdbcType=VARCHAR } where fbNum=#{fbNum}
+	</update>
+	<update id="delete" parameterType="integer">
+		update fboard set fbDel='y' where fbNum=#{fbNum}
+	</update>
+	<select id="searchfboardlist" resultType="fboard">
+		select * from (select rowNum rn, a.* from(select * from fboard where (lower(fbTitle) like lower('%' ||  #{result} || '%') 
+			or lower(id) like lower('%' ||  #{result} || '%')) and fbDel='n' order by fbNum desc )a) where rn <![CDATA[<=]]> #{resultnum}
+	</select>
+	<select id="selectmainList" resultType="fboard">
+		select * from (select rowNum rn, a.* from(select * from fboard order by fbNum desc)a) where rn <![CDATA[<=]]> 5
+	</select>
+	<select id="mylist" resultType="fboard">
+		select * from (select rowNum rn, a.* from(select * from fboard where id=#{id} order by fbNum desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="getmyTotal" parameterType="string" resultType="integer" >
+		select count(*) from fboard where id=#{id}
+	</select>
+	<select id="selectId" resultType="string" parameterType="integer">
+		select id from fboard where fbNum = #{fbNum}
+	</select>
+	<update id="plusCount" parameterType="integer">
+		update fboard set replyCount = replyCount + 1 where fbNum = #{fbNum }
+	</update>
+	<update id="minusCount" parameterType="integer">
+		update fboard set replyCount = replyCount -1 where fbNum = #{fbNum }
+	</update>
+	<update id="suspend" parameterType="integer">
+		update fboard set fbDel='m' where fbNum = #{fbNum }
+	</update>
+	<select id="gettotalsearch" parameterType="string" resultType="integer">
+		select count(*) from fboard where ${whereFb} like '%' ||  #{fbsearch} || '%'
+	</select>
+	<select id="selectSearchList" parameterType="string" resultType="fboard">
+		<!-- select * from (select rowNum rn, a.* from(select * from fboard where ${whereFb} like '%' ||  #{fbsearch} || '%' order by fbDate desc)a) 
+		where rn between #{startRow} and #{endRow} -->
+		select * from (select rowNum rn, a.* from(select * from fboard where (lower(fbTitle) like lower('%' ||  #{fbsearch} || '%') 
+			or lower(id) like lower('%' ||  #{fbsearch} || '%')) 
+			order by fbNum desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="searchMainfboardlist" parameterType="string" resultType="fboard">
+		select * from (select rowNum rn, a.* from(select * from fboard 
+			where (lower(fbTitle) like lower('%' ||  #{fbsearch} || '%') 
+				or lower(id) like lower('%' ||  #{fbsearch} || '%'))
+				order by fbNum desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	
+</mapper>

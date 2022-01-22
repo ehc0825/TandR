@@ -1,0 +1,175 @@
+html, body {
+	margin:0;
+	padding:0;
+	width:100%;
+	height: 100%;
+}
+#headbar{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#maincontent
+{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#footcontent{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+header{ 
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #4F5050;
+	height: 55px;
+	z-index: 500;
+	width: 100%;
+}
+.top10{
+	font-size: 120%;
+	margin-left: 20px;
+	margin-top:20px;
+	margin-bottom: 5px
+}
+.top10:hover{
+	background: #4F5050;
+	margin-left: 15px;
+	margin-bottom: 15px
+}
+.top10space
+{
+	font-size: 5%;
+}
+section{
+	position: absolute;
+	left: 0;
+	background:black;
+	top: 55px;
+	color:white;
+    width: 100%;
+	height: 950px;
+	z-index: 1;
+}
+footer{
+	position: absolute;
+	background: black;
+	height: 130px;
+    width: 100%;
+    left:0;
+    top:930px;
+	z-index: 300;
+}
+#title1{
+	color: yellow;
+	font-size: 180%;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 170px;
+}
+#title2{
+	color: yellow;
+	font-size: 150%;
+	font-weight: bold;
+	position: absolute;
+	top: 60px;
+	left: 190px;
+}
+#title3{
+	color: yellow;
+	font-size: 150%;
+	font-weight: bold;
+	position: absolute;
+	top: 450px;
+	left: -10px;
+}
+#searchResult1
+{
+	color: white;
+	position: absolute;
+	top: 90px;
+	left: 200px;
+}
+#aboutTandR
+{
+	color: white;
+	position: absolute;
+	top: 70px;
+	left: 200px;
+
+}
+.movieTable{
+	width:700px; 
+    margin: auto;
+	font-weight: bold; 
+}
+#container {
+	color: white;
+	position: absolute;
+	left: 50px;
+	top : 490px;
+}
+a[id="category1"] {
+  	color: white;
+	font-size: 150%;
+	font-weight: bold;
+  	position: absolute;
+  	top: 100px;
+	left: 150px;;
+}
+a[id="category2"] {
+  	color: white;
+	font-size: 150%;
+	font-weight: bold;
+  	position: absolute;
+  	top: 100px;
+	left: 300px;;
+}
+a[id="category3"] {
+	color: white;
+	font-size: 150%;
+	font-weight: bold;
+	position: absolute;
+  	top: 100px;
+	left: 480px;;
+}
+#maintable{
+	
+	width: 800px;
+	text-align: center;
+}
+.more{
+	text-decoration: underline;
+	color: blue;
+	position: relative;
+	left: 720px;
+	top: 10px;
+}
+a[class="button"] {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	display: block;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+}
+
+a.button {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(255, 54, 0, 0.85) 0 0px 0px 2px inset;
+}
+
+a.button:hover {
+	color: rgba(0, 0, 0, 1);
+	box-shadow: rgba(255, 54, 0, 0.85) 0 0px 0px 40px inset;
+}

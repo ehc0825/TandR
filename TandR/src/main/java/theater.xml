@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="theatertr">
+	<select id="select" parameterType="int" resultType="theater">
+		select * from theater where theaterCode=#{theaterCode}
+	</select>
+		
+	<select id="selectTheaterList24545" resultType="theater">
+	select * from (select rowNum rn, a.* from(select * from theater order by theaterCode )a) where rn <![CDATA[<=]]> 30
+	</select>
+			
+	
+	<select id="selectTheaterList" resultType="theater">
+	select * from (select rowNum rn, a.* from(select theaterCode, theaterLoc, theaterName from THEATER where theaterCode IN (select theaterCode from NOWSHOWING where movieCode=#{movieCode}) order by theaterCode)a)
+	</select>
+	<select id="getTheaterlist" resultType="theater">
+	select * from THEATER
+	</select>
+		
+</mapper>

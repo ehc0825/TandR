@@ -1,0 +1,153 @@
+html, body {
+	margin:0;
+	padding:0;
+	width:100%;
+	height: 100%;
+}
+#headbar{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#maincontent
+{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#footcontent{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+header{ 
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #4F5050;
+	height: 55px;
+	z-index: 500;
+	width: 100%;
+}
+
+section{
+	position: absolute;
+	left: 0;
+	background: black;
+	top: 55px;
+	color:white;
+    width: 100%;
+	height: 1150px;
+	z-index: 1;
+}
+footer{
+	position: absolute;
+	background: black;
+	height: 130px;
+    width: 100%;
+    left:0;
+    top:1130px;
+	z-index: 300;
+}
+#title1{
+	color: yellow;
+	font-size: 300%;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 170px;
+}
+#title2{
+	color: yellow;
+	font-size: 160%;
+	font-weight: bold;
+	position: absolute;
+	top: 150px;
+	left: 150px;
+}
+#mainvideo
+{
+	position: absolute;
+	top: 70px;
+	left: 230px;
+	width:560px ;
+	height:315px;
+}
+#searchResult
+{
+	color: white;
+	position: absolute;
+	top: 70px;
+	left: 200px;
+}
+#aboutTandR
+{
+	color: white;
+	position: absolute;
+	top: 70px;
+	left: 200px;
+
+}
+
+a[id="category1"] {
+  	color: white;
+	font-size: 150%;
+	font-weight: bold;
+  	position: absolute;
+  	top: 100px;
+	left: 150px;
+}
+a[id="category2"] {
+  	color: white;
+	font-size: 150%;
+	font-weight: bold;
+  	position: absolute;
+  	top: 100px;
+	left: 300px;
+}
+a[id="category3"] {
+	color: white;
+	font-size: 150%;
+	font-weight: bold;
+	position: absolute;
+  	top: 100px;
+	left: 450px;
+}
+#container {
+	color: white;
+	position: absolute;
+	left: 300px;
+	top : 300px;
+}
+#contentArea
+{
+	color: black;
+	position: absolute;
+	top: 300px;
+	left: 225px;
+	height: 593px;
+	width: 820px;
+	background: white;
+}
+.mymenu:hover{
+	text-decoration: underline;
+}
+#title{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	background: black;
+	color: white;
+	position: relative;
+	left: 10px;
+	width: 300px;
+	}
+#titleArea{
+	position: absolute;
+	left: 200px;
+	top: 250px;
+	font-size: 110%;
+	}

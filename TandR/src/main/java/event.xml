@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eventns">
+	<select id="select" parameterType="string" resultType="event">
+		select * from event where id=#{id}
+	</select>
+	<select id="getTotal" parameterType="string" resultType="integer" >
+		select count(*) from event
+	</select>
+	<select id="list" resultType="event">
+		select * from (select rowNum rn, a.* from(select * from event order by eventNum desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<insert id="insert" parameterType="event">
+		<selectKey keyProperty="eventNum" order="BEFORE" resultType="integer">
+			select nvl(max(eventNum), 0) + 1 eventNum from event
+		</selectKey>
+		insert into event (eventNum, eventTitle, eventContent, id, photo, eventDate, eventClose, eventReadCount)
+			values(#{eventNum}, #{eventTitle}, #{eventContent}, #{id}, #{photo,jdbcType=VARCHAR}, sysdate, 'n', 0)
+	</insert>
+	<select id="selectOne" resultType="event">
+		select * from event where eventNum = #{eventNum}
+	</select>
+	<select id="selectId" resultType="string" parameterType="integer">
+		select id from event where eventNum = #{eventNum}
+	</select>
+	<update id="update" parameterType="event">
+		update event set eventTitle=#{eventTitle}, eventContent=#{eventContent}, photo=#{photo,jdbcType=VARCHAR } where eventNum=#{eventNum}
+	</update>
+	<update id="close" parameterType="integer">
+		update event set eventClose ='y' where eventNum=#{eventNum}
+	</update>
+	<update id="readcount" parameterType="integer">
+		update event set eventReadCount = eventReadCount + 1 where eventNum = #{eventNum}
+	</update>
+</mapper>

@@ -1,0 +1,165 @@
+a{
+	color:white;
+	text-decoration: none;
+}
+
+#logo{
+	position: absolute;
+    top: 0px;
+    left: 130px;
+}
+#search{
+	position: absolute;
+    top: 5px;
+    left: 200px;
+   	width: 300px;
+   	height: 35px;
+
+}
+#search2{
+	position: absolute;
+    top: 8px;
+    left: 470px;
+   	width: 35px;
+   	height: 35px;
+   background: white;
+   border-bottom: none;
+   border-left: none;
+   border-right: none;
+   border-top: none;
+   
+
+}
+#menu {
+	position: absolute;
+    height: 50px;
+    background: #4F5050;
+    position: absolute;
+    top: 2px;
+    left: 520px;
+    z-index: 500;
+
+}
+#menu2 {
+	position: absolute;
+    height: 50px;
+    background: #4F5050;
+    position: absolute;
+    top: 2px;
+    left: 975px;
+    z-index: 500;
+
+}
+#middlebar{
+	position: absolute;
+	top: 16px;
+    left: 970px;
+	font-size: larger;
+	color: gray;
+	 z-index: 600;
+}
+#Signin{
+	position: absolute;
+	top: 16px;
+    left: 1045px;
+    font-size: larger;
+     z-index: 600;
+}
+#mytext{
+	position: absolute;
+	top: 18px;
+    left: 1045px;
+    font-size: larger;
+     z-index: 600;
+}	
+#Signin:hover {
+	color: #fff;
+
+    font-weight: bold;
+	}
+.main1 {
+	list-style:none;
+    width: 500px;
+
+    height: 100%;
+
+    margin: 0 auto;
+     z-index: 500;
+
+}
+.main1>li {
+	list-style:none;
+    float: left;
+
+    width: 25%;
+
+    line-height: 50px;
+
+    text-align: center;
+
+    position: relative;
+     z-index: 500;
+
+}
+.main1>li:hover .main2 {
+
+    left: 0;
+     z-index: 500;
+
+}
+.main1>li a {
+
+    display: block;
+     z-index: 500;
+
+}
+
+
+
+.main1>li a:hover {
+
+    background: #4F5050;
+
+    color: #fff;
+
+    font-weight: bold;
+     z-index: 500;
+
+}
+
+
+
+.main2 {
+	list-style:none;
+    position: absolute;
+	padding: 0;
+    top: 50px;
+
+    left: -9999px;
+
+    background: #4F5050;
+    width: 100%;
+
+}
+.main2>li {
+	list-style:none;
+    position: relative;
+    padding: 0;
+
+ z-index: 500;
+}
+.main2>li:hover .main3 {
+
+    left: 100%;
+    padding: 0;
+     z-index: 500;
+
+}
+.main2>li a, .main3>li a {
+	list-style:none;
+    border-radius: 10px;
+	padding: 0;
+    margin: 10px;
+     z-index: 500;
+
+}

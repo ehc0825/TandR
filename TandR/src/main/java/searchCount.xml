@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchCountsc">
+	<select id="select" parameterType="string" resultType="searchCount">
+		select * from searchCount where search=lower(#{result})
+	</select>	
+	<insert id="insert" parameterType="searchCount">
+	insert into searchCount (search,searchCt)values(lower(#{result}),1)
+	</insert>
+	<update id="update">
+	update searchCount set searchCt=searchCt+1 where lower(search)=lower(#{result})
+	</update>
+	<select id="gettotal" parameterType="string" resultType="_int">
+	select count(*) from searchCount
+	</select>
+	<select id="selectList" resultType="searchCount">
+	select * from (select rowNum rn, a.* from(select * from searchCount order by searchCt desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+</mapper>

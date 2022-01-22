@@ -1,0 +1,178 @@
+html, body {
+	margin:0;
+	padding:0;
+	height: 100%;
+}
+#headbar{
+	width :1300px;
+	position: absolute;
+	height: 55px;
+	left:50%;
+	margin-left: -650px;
+}
+#maincontent
+{
+	width :1300px;
+	position: relative;
+	min-height:100%;
+	height:100%;
+	left:50%;
+	margin-left: -650px;
+}
+#footcontent{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+wrap{
+	display: block;
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	position: relative;
+	width: 100%;
+	background: black;
+}
+header{
+	background: #4F5050;
+	position: absolute;
+	width:100%;
+	top: 0;
+	left: 0;
+	height: 55px;
+	z-index: 500;
+}
+section{
+	color:white;
+	display: block;
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	position: relative;
+	width: 100%;
+	background: black;
+	padding-bottom: 130px;
+    
+}
+footer{
+	display: block;
+	width: 100%;
+	height: 130px;
+	bottom:0px;
+	position: absolute;
+	background: black;
+	}
+	
+/* -----container 영역--- */
+.container_top {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+	top : 75px;
+}
+
+.title1{
+	color: yellow;
+	font-size: 300%;
+	font-weight: bold;
+	position: relative;
+	left: 170px; 
+    display: inline;
+}	
+.title2{
+	color: white;
+	font-size: 160%;
+	font-weight: bold;
+	position: relative;
+	top: 100px;
+     left: -20px;
+	display: inline;
+}
+
+#writerInfo {
+    margin-left: 600px;
+    position: relative;
+    top: 120px;
+    
+}
+
+.main_content {
+    position: relative;
+    width: 100%;
+    
+}
+.main_content>img{
+    object-fit: contain;
+    width: 50%;
+    height: 70%;
+    left: 300px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.content {
+    position: relative;
+    top:  20px;
+    left: 280px;
+}
+#viewbtn {
+    position: relative;
+    left: 820px;
+    top: 100px;
+}
+#replyArea {
+  position: relative;
+  margin-left: 150px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.reply {
+  position: relative;
+  margin-left: 280px;
+  margin-top: 30px;
+}
+.replyInsert_frm {
+  margin-left: 5px;
+   
+}
+.submit_box {
+  margin-left: 490px;
+}
+.re {
+	float: left;
+    display: inline-block;
+    border-left: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+    width: 11px;
+    height: 9px;
+    margin: 15px;
+}
+.reRe_top {
+	position: relative;
+	margin-left: 20px;
+}
+updatebtn_area>span {
+	cursor: pointer;	
+}
+.rpupdate_frm {
+	/* display: none; */
+	padding : 10px;
+}
+.reReplybtn {
+	cursor: pointer;
+}
+#delMsg {
+    margin-left: 20%;
+}
+.updatebtn_area {
+	cursor: pointer;
+}
+.re_cancelbtn {
+	cursor: pointer;
+}
+.replyDate {
+	margin-left: 470px;
+}

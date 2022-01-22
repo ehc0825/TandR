@@ -1,0 +1,147 @@
+html,body {
+	margin:0;
+	padding:0;
+	width:100%;
+	height: 100%;
+	background:black;
+}
+tr.listM:hover{
+	color:white;
+	background:black;
+}
+header{ 
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #4F5050;
+	height: 55px;
+	z-index: 500;
+	width: 100%;
+}
+#headbar{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#maincontent
+{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+#footcontent{
+	width :1300px;
+	position: absolute;
+	left:50%;
+	margin-left: -650px;
+}
+section{
+	position: absolute;
+	left: 0;
+	background:black;
+	top: 0;
+	color:black;
+    width: 100%;
+	height: 750px;
+	z-index: 1;
+}
+#sidemenu{
+	position: absolute;
+	left: 5;
+	top: 60;
+	height:700px;
+	z-index: 500;
+}
+
+footer{
+	position: absolute;
+
+	height: 130px;
+    width: 100%;
+    left:0;
+    top:660px;
+	z-index: 100;
+}
+#title1{
+	color: yellow;
+	font-size: 180%;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 290px;
+}
+#contentBox
+{
+	color: black;
+	position: absolute;
+	top: 70px;
+	left: 150px;
+	height: 600px;
+	width: 1000px;
+	background-color: #EAEAEA;
+}
+#logo{
+	position: absolute;
+	top: 27px;
+	left: 255px;
+}
+#numberbar{
+	align-content:center;
+	position: absolute;
+	top: 490px;
+	left: 390px;
+}
+
+#searchbox{
+	align-content:center;
+	position: absolute;
+	top: 530px;
+	left: 320px;
+}
+#memberlist{
+	align-content:center;
+	position: absolute;
+	top: 10px;
+	left: 150px;
+	font-size: 120%;
+	
+}
+#space{
+	font-size: 60%;
+}
+#mcount{
+	position: absolute;
+	top: 20px;
+	left: 50px;
+}
+#fboard{
+	position: absolute;
+	top: 80px;
+	left: 50px;
+}
+#review {
+	position: absolute;
+	top: 100px;
+	left: 50px;
+	
+}
+#resultbox{
+	align-content:center;
+	position: absolute;
+	top: 100px;
+	left: 350px;
+}
+#eventWritebtn{
+	align-content:center;
+	position: absolute;
+	top: 560px;
+	left: 780px;
+}
+#resulttable{
+	width: 750px;
+	font-size: 80%;
+	height: 40%;
+}
+

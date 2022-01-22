@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replyns">
+	<select id="select" parameterType="string" resultType="reply">
+		select * from reply where id=#{id}
+	</select>
+	<!-- 게시글별 댓글 카운트 -->
+	<select id="rpList" parameterType="integer" resultType="reply"> 
+		select * from (select rowNum rn, e.* from (select * from reply where fbNum = #{fbNum} 
+		and replyDel='n' order by replyDate, ref desc, ref_step) e) order by rn
+	</select>
+	<!-- 삭제된 댓글도 포함 -->
+	<select id="rpList2" parameterType="integer" resultType="reply"> 
+		select * from (select * from reply where fbNum = #{fbNum }
+		order by replyDate,ref desc, ref_step desc) order by ref, ref_step
+	</select>
+	<!-- 대댓글 입력 -->
+	<insert id="insert" parameterType="reply">
+		<selectKey keyProperty="replyNum" order="BEFORE" resultType="integer">
+			select nvl(max(replyNum), 0) + 1 replyNum from reply
+		</selectKey>
+		insert into reply values(#{replyNum}, #{fbNum }, #{replyContent}, #{id }, sysdate, 'n', #{replyNum }, #{ref_level}, #{ref_step})
+	</insert>
+	<!-- ref_step 구하기 -->
+	<select id="selectStep" parameterType="integer" resultType="integer">
+		select nvl(max(ref_step), 0) + 1 ref_step from reply where ref = #{ref }
+	</select>
+	<insert id="insertRe" parameterType="reply">
+		<selectKey keyProperty="replyNum" order="BEFORE" resultType="integer">
+			select nvl(max(replyNum), 0) + 1 replyNum from reply
+		</selectKey>
+		insert into reply values(#{replyNum}, #{fbNum }, #{replyContent}, #{id }, sysdate, 'n', #{ref }, #{ref_level}, #{ref_step})
+	</insert>
+	<update id="update" parameterType="integer">
+		update reply set replyContent = #{replyContent} where replyNum = #{replyNum }
+	</update>
+	<update id="delete" parameterType="integer">
+		update reply set replyDel = 'y' where replyNum = #{replyNum }
+	</update>
+</mapper>
